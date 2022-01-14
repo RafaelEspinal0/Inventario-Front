@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { getSession } from '../utils/local';
+import { IProducto } from '../models/producto.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +38,23 @@ export class ProductosService {
     });
     return this.http.post(direccion, form, { headers })
   }
+
+  putProductos(producto: IProducto, id: number): Observable<any> {
+    let direccion = this.url + `/productos/${id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${getSession().jwt}`,
+    });
+    return this.http.put(direccion, { ...producto }, { headers });
+  }
+
+  deleteProductoById(id: number): Observable<any> {
+    let direccion = this.url + `/productos/${id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${getSession().jwt}`,
+    });
+    return this.http.delete(direccion, { headers });
+  }
+
 }

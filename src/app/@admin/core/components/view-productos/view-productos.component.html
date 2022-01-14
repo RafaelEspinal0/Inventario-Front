@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="col-6">
-        <p class="name">Precio: <span class="text-secondary">{{producto.precio}}</span></p>
+        <p class="name">Precio: <span class="text-secondary">{{producto.precio | currency: "USD"}}</span></p>
         <p class="name">Categoria: <span class="text-secondary">{{producto.categoria.nombre}}</span></p>
         <p class="name">Marca: <span class="text-secondary">{{producto.marca.nombre}}</span></p>
       </div>

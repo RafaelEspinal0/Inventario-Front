@@ -10,11 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { PublicModule } from './@public/pages/public.module';
 import { AddProductosComponent } from './@admin/core/components/add-productos/add-productos.component';
 import { ViewProductosComponent } from './@admin/core/components/view-productos/view-productos.component';
+import { EditProductosComponent } from './@admin/core/components/edit-productos/edit-productos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewProductosComponent,
+    EditProductosComponent,
   ],
   imports: [
     BrowserModule,

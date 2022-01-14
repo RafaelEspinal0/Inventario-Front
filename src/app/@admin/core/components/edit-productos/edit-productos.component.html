@@ -1,0 +1,89 @@
+<div class="modal-header">
+    <h4>Editar producto</h4>
+    <button class="btn btn-danger" aria-label="close" type="button" (click)="modal.dismiss()"><i
+        class="fas fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <form  [formGroup]="form" (ngSubmit)="edit($event)">
+      <div class="row">
+        <div class="col-6">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" name="nombre" formControlName="nombre" id="nombre"
+          placeholder="Nombre del producto" />
+          <div class="mt-2" *ngIf="form.get('nombre').errors && form.get('nombre').touched">
+            <p class="alert alert-danger" role="alert" *ngIf="form.get('nombre').hasError('required')">
+              Este campo es requerido
+            </p>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="cantidad" class="form-label">Cantidad</label>
+          <input type="text" class="form-control" formControlName="cantidad" name="cantidad" id="cantidad"
+            placeholder="Cantidad del producto" />
+          <div class="mt-2" *ngIf="form.get('cantidad').errors && form.get('cantidad').touched">
+            <p class="alert alert-danger" role="alert" *ngIf="form.get('cantidad').hasError('required')">
+              Este campo es requerido
+            </p>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="precio" class="form-label">Precio</label>
+          <input type="number" class="form-control" formControlName="precio" name="precio" id="precio"
+            placeholder="Precio del producto" />
+          <div class="mt-2" *ngIf="form.get('precio').errors && form.get('precio').touched">
+            <p class="alert alert-danger" role="alert" *ngIf="form.get('precio').hasError('required')">
+              Este campo es requerido
+            </p>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="categoria" class="form-label">Categorias</label>
+          <select class="form-select" formControlName="categoria" id="categoria"
+            name="categoria">
+            <option value="" selected disabled hidden>Elige la categoria del producto</option>
+            <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
+          </select>
+          <div class="mt-2" *ngIf="form.get('categoria').errors && form.get('categoria').touched">
+            <p class="alert alert-danger" role="alert" *ngIf="form.get('categoria').hasError('required')">
+              Este campo es requerido
+            </p>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="marca" class="form-label">Marca</label>
+          <select class="form-select" formControlName="marca" id="marca"
+            name="marca">
+            <option value="" selected disabled hidden>Elige la marca del producto</option>
+            <option *ngFor="let marca of marcas" value="{{marca.id}}">{{marca.nombre}}</option>
+          </select>
+          <div class="mt-2" *ngIf="form.get('marca').errors && form.get('marca').touched">
+            <p class="alert alert-danger" role="alert" *ngIf="form.get('marca').hasError('required')">
+              Este campo es requerido
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripcion del producto</label>
+        <textarea class="form-control" formControlName="descripcion" id="descripcion" name="descripcion"
+          rows="3"></textarea>
+        <div class="mt-2" *ngIf="form.get('descripcion').errors && form.get('descripcion').touched">
+          <p class="alert alert-danger" role="alert" *ngIf="form.get('descripcion').hasError('required')">
+            Este campo es requerido
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <!-- <div class="input-group mb-3">
+          <div class="custom-file">
+            <input accept="image/*" type="file" class="custom-file-input" id="foto" name="foto" (change)="onFileChange($event)">
+            <label class="custom-file-label" for="foto">Imagen del producto</label>
+          </div>
+        </div> -->
+      </div>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-success" type="submit">Guardar <i class="fas fa-save"></i></button>
+      
+      </div>
+    </form>
+  </div>
