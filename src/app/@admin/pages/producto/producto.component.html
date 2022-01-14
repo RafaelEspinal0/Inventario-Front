@@ -17,14 +17,14 @@
         </tr>
       </thead>
       <tbody *ngIf="productos.length == 0">
-        <td colspan="6" class="text-center">No hay registros...</td>
+        <td colspan="7" class="text-center">No hay registros...</td>
       </tbody> 
       <tbody>
         <tr *ngFor="let producto of productos; index as i">
           <th scope="row">{{i + 1}}</th>
           <td>{{producto.nombre}}</td>
           <td>{{producto.cantidad}}</td>
-          <td>{{producto.precio}}</td>
+          <td>{{producto.precio | currency: 'USD'}}</td>
           <td>{{producto.categoria.nombre}}</td>
           <td>{{producto.marca.nombre}}</td>
          

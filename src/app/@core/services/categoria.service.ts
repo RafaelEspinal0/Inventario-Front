@@ -7,25 +7,17 @@ import { getSession } from '../utils/local';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductosService {
+export class CategoriaService {
+
   url = environment.urlApi
   constructor(private http: HttpClient) { }
 
-  getAllProductos(): Observable<any> {
-    let direccion = this.url + '/productos';
+  getAllCategorias(): Observable<any> {
+    let direccion = this.url + '/categorias';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${getSession().jwt}`,
     });
-    return this.http.get(direccion , { headers });
-  }
-
-  postProductos(form:any):Observable<any> {
-    let direccion = this.url + '/productos';
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${getSession().jwt}`,
-    });
-    return this.http.post(direccion, form, { headers })
+    return this.http.get(direccion, { headers });
   }
 }
