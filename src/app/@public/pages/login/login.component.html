@@ -35,17 +35,17 @@
 
 .center h1{
     text-align: center;
-    padding: 0 0 20px 0;
+    padding: 20px 0 20px 0;
     border-bottom: 1px solid silver;
 }
 .center > form{
-    padding:  0 40px;
+    padding:  20px 40px;
     box-sizing: border-box;
 }
 .camp_text{
     position: relative;
     border-bottom: 2px solid #adadad;
-    margin: 30px 0px;
+    margin: 50px 0px;
 }
 .camp_text input{
     width: 100%;
@@ -61,9 +61,10 @@
     top: 50%;
     left: 5px;
     color: #adadad;
-    transform: translateY(-50%);
+    transform: translateY(-100%);
     pointer-events: none;
     transition: .5s;
+    
 }
 .camp_text span::before{
     content: "";
@@ -72,7 +73,7 @@
     left: 0;;
     width: 0%;
     height: 2px;
-    background: #2691d9;
+    background: #adadad;
     transition: .5s;
 }
 
@@ -104,37 +105,41 @@ input[type="submit"]:hover{
     border-color: #2691d9;
     transition: .5s;
 }
+
+.alert{
+    margin-top: -30px;
+}
 </style>
 <div id="body">
     <div class="center">
         <h1>Login</h1>
         <form [formGroup]="form" (ngSubmit)="login($event)">
             <div class="camp_text">
-                <input type="text" class="form-control" formControlName="identifier" name="username" placeholder="nombre.apellido">
+                <input type="text" class="form-control" formControlName="identifier" name="username" placeholder="Username">
                 <span></span>
                 <label>Username</label>
-                <div class="mt-2" *ngIf="form.get('identifier').errors && form.get('identifier').touched">
-                    <p class="alert alert-danger" role="alert" *ngIf="form.get('identifier').hasError('required')">
-                        Este campo es requerido
-                    </p>
-                </div>
+                
+            </div>
+            <div class="mt-2" *ngIf="form.get('identifier').errors && form.get('identifier').touched">
+                <p class="alert alert-danger" role="alert" *ngIf="form.get('identifier').hasError('required')">
+                    Este campo es requerido
+                </p>
             </div>
             
             <div class="camp_text">
-                <input type="password" class="form-control" formControlName="password"  name="password">
+                <input type="password" class="form-control" formControlName="password"  name="password" placeholder="Password">
                 <span></span>
                 <label>Password</label>
-                <div class="mt-2" *ngIf="form.get('password').errors && form.get('password').touched">
-                    <p class="alert alert-danger" role="alert" *ngIf="form.get('password').hasError('required')">
-                        Este campo es requerido
-                    </p>
-                    <p class="alert alert-danger" role="alert" *ngIf="form.get('password').hasError('minlength')">
-                        Minimo 6 caracteres
-                    </p>
-                </div>
-                
             </div>
-            <input type="submit" >
+            <div class="mt-2" *ngIf="form.get('password').errors && form.get('password').touched">
+                <p class="alert alert-danger" role="alert" *ngIf="form.get('password').hasError('required')">
+                    Este campo es requerido
+                </p>
+                <p class="alert alert-danger" role="alert" *ngIf="form.get('password').hasError('minlength')">
+                    Minimo 6 caracteres
+                </p>
+            </div>
+            <input type="submit" value="Login">
             
         </form>
     </div>
