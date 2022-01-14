@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AdminModule } from './@admin/pages/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PublicModule } from './@public/pages/public.module';
+import { AddProductosComponent } from './@admin/core/components/add-productos/add-productos.component';
 
 @NgModule({
   declarations: [

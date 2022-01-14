@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProductosService } from '../../../@core/services/productos.service';
 
 @Component({
   selector: 'app-producto',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductoComponent implements OnInit {
 
-  constructor() { }
+  public productos: Array<any> = [];
+  constructor(
+    private productoService: ProductosService,
+    modalService: NgbModal,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.productoService.getAllProductos().subscribe((data)=>{
+      this.productos = data
+    })
   }
 
 }
