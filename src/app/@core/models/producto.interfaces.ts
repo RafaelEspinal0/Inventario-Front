@@ -6,7 +6,13 @@ export interface IProducto{
     nombre?:string;
     cantidad?:string;
     precio?:string;
+    foto?:IFoto;
     descripcion?:string;
     categoria?:ICategoria;
     marca?:IMarca;
+}
+
+export interface IFoto{
+    id?:string;
+    url?:string;
 }

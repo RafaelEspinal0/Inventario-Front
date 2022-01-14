@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h4>{{ producto.nombre }}</h4>
+    <button class="btn btn-danger" aria-label="close" type="button" (click)="modal.dismiss()"><i
+        class="fas fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <h6 class="lead">Informacion del producto</h6>
+    <hr />
+    <img src="https://api-inventario-backnd.herokuapp.com{{producto.foto.url}}" class="img-fluid" alt="...">
+    <div class="row">
+      <div class="col-6">
+        <div class="m-1">
+          <p class="name">Nombre: <span class="text-secondary">{{producto.nombre}}</span></p>
+          <p class="name">Cantidad <span class="text-secondary">{{producto.cantidad}}</span>
+          </p>
+        </div>
+      </div>
+      <div class="col-6">
+        <p class="name">Precio: <span class="text-secondary">{{producto.precio}}</span></p>
+        <p class="name">Categoria: <span class="text-secondary">{{producto.categoria.nombre}}</span></p>
+        <p class="name">Marca: <span class="text-secondary">{{producto.marca.nombre}}</span></p>
+      </div>
+    </div>
+    <div class="p-2 border border-ligth">
+      <h6 class="name">Descripcion del producto:</h6>
+      <p class="text-center text-secondary">{{producto?.descripcion}}</p>
+    </div>
+  </div>

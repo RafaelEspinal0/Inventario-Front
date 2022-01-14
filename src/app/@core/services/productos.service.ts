@@ -20,6 +20,15 @@ export class ProductosService {
     return this.http.get(direccion , { headers });
   }
 
+  getAllProductosById(productoId:any): Observable<any> {
+    let direccion = this.url + `/productos/${productoId}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${getSession().jwt}`,
+    });
+    return this.http.get(direccion , { headers });
+  }
+
   postProductos(form:any):Observable<any> {
     let direccion = this.url + '/productos';
     const headers = new HttpHeaders({

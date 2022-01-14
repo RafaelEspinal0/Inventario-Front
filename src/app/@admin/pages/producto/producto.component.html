@@ -29,7 +29,7 @@
           <td>{{producto.marca.nombre}}</td>
          
           <td>
-            <button class="btn btn-primary" >
+            <button class="btn btn-primary" (click)="viewModal(producto.id)" >
                 <i class="far fa-eye"></i>
             </button>
             <button  class="btn btn-success mx-2">
