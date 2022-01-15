@@ -1,1 +1,67 @@
-<p>categoria works!</p>
+<div class="container">
+    <div class="alert alert-dark capsule" role="alert">
+      <h2 class="display-4 title">Categorias</h2>
+      <button class="btn btn-primary" (click)="modal.open(contenido, { size: 'lg' })">Nueva categoria <i
+        class="fas fa-plus"></i></button>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Opciones</th>
+          
+        </tr>
+      </thead>
+      <tbody *ngIf="categorias.length == 0">
+        <td colspan="3" class="text-center">No hay registros...</td>
+      </tbody> 
+      <tbody>
+        <tr *ngFor="let categoria of categorias; index as i">
+          <th scope="row">{{i + 1}}</th>
+          <td >{{categoria.nombre}}</td>
+          <td>
+            <button  class="btn btn-success mx-2" (click)="editModal(categoria.id)">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-danger"  (click)="deleteCategoria(categoria.id)" >
+                <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <ng-template #contenido let-modal>
+    <div class="modal-header">
+      <h4>Agregar Categorias</h4>
+      <button class="btn btn-danger" aria-label="close" type="button" (click)="modal.dismiss()"><i
+          class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <form  [formGroup]="form" (ngSubmit)="save($event)">
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" formControlName="nombre" id="nombre"
+            placeholder="Nombre de la categoria" />
+            <div class="mt-2" *ngIf="form.get('nombre').errors && form.get('nombre').touched">
+              <p class="alert alert-danger" role="alert" *ngIf="form.get('nombre').hasError('required')">
+                Este campo es requerido
+              </p>
+            </div>
+          </div>
+        </div>
+        <hr>
+        
+        <div class="modal-footer">
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-success" type="submit">Guardar <i class="fas fa-save"></i></button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </ng-template>

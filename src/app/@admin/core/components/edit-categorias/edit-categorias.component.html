@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h4>Editar Categorias</h4>
+    <button class="btn btn-danger" aria-label="close" type="button" (click)="modal.dismiss()"><i
+        class="fas fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <form  [formGroup]="form" (ngSubmit)="edit($event)">
+      <div class="row">
+        <div class="col-12">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" name="nombre" formControlName="nombre" id="nombre"
+          placeholder="Nombre de la categoria" />
+          <div class="mt-2" *ngIf="form.get('nombre').errors && form.get('nombre').touched">
+            <p class="alert alert-danger" role="alert" *ngIf="form.get('nombre').hasError('required')">
+              Este campo es requerido
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      
+      <div class="modal-footer">
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-success" type="submit">Guardar <i class="fas fa-save"></i></button>
+        </div>
+      </div>
+
+    </form>
+  </div>

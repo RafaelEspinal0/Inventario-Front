@@ -11,12 +11,18 @@ import { PublicModule } from './@public/pages/public.module';
 import { AddProductosComponent } from './@admin/core/components/add-productos/add-productos.component';
 import { ViewProductosComponent } from './@admin/core/components/view-productos/view-productos.component';
 import { EditProductosComponent } from './@admin/core/components/edit-productos/edit-productos.component';
+import { AddMarcasComponent } from './@admin/core/components/add-marcas/add-marcas.component';
+import { EditMarcasComponent } from './@admin/core/components/edit-marcas/edit-marcas.component';
+import { EditCategoriasComponent } from './@admin/core/components/edit-categorias/edit-categorias.component';
+import { AddCategoriasComponent } from './@admin/core/components/add-categorias/add-categorias.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewProductosComponent,
     EditProductosComponent,
+    EditMarcasComponent,
+    EditCategoriasComponent,
   ],
   imports: [
     BrowserModule,

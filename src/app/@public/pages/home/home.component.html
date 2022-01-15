@@ -1,1 +1,44 @@
-<p>home works!</p>
+<div class="container d-md-flex align-items-stretch">
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+
+        <div *ngFor="let producto of productos" class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://api-inventario-backnd.herokuapp.com{{producto.foto.url}}" class="card-img-top"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{producto.nombre}}</h5>
+                        <p class="card-text">{{producto.descripcion}}</p>
+                        <a (click)="viewModal(producto.id)" class="btn btn-outline-warning">Mostrar mas detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div  *ngIf="productos.length == 0"  >
+            <div class="container">
+                <aside id="aside"><img src="../../../../assets/img/Mirror.png" alt="404 Image" />
+                </aside>
+                <main id="main">
+                    <h1>Lo sentimos!</h1>
+                    <p>
+                        En estos momentos no tenemos disponible el articulo que buscas <em>. . . like your social
+                            life.</em>
+                    </p>
+                </main>
+
+            </div>
+        </div>
+    </div>
+
+    <nav id="sidebar">
+        <div class="p-4 pt-5">
+            <h5>Categories</h5>
+            <ul *ngFor="let c of categorias" class="list-unstyled components mb-1">
+                <li><a (click)=" getProductos(c.id)"><span class="fa fa-chevron-right"></span> {{c.nombre}}</a></li>
+            </ul>
+
+
+        </div>
+    </nav>
+</div>

@@ -1,1 +1,33 @@
-<p>marca works!</p>
+<div class="container">
+    <div class="alert alert-dark capsule" role="alert">
+      <h2 class="display-4 title">Marcas</h2>
+<app-add-marcas></app-add-marcas>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Opciones</th>
+          
+        </tr>
+      </thead>
+      <tbody *ngIf="marcas.length == 0">
+        <td colspan="3" class="text-center">No hay registros...</td>
+      </tbody> 
+      <tbody>
+        <tr *ngFor="let marca of marcas; index as i">
+          <th scope="row">{{i + 1}}</th>
+          <td >{{marca.nombre}}</td>
+          <td>
+            <button  class="btn btn-success mx-2" (click)="editModal(marca.id)">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-danger"  (click)="deleteMarca(marca.id)" >
+                <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
